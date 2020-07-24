@@ -6,7 +6,6 @@ import com.oocl.cultivation.PackingLot;
 import com.oocl.cultivation.PackingTicket;
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,7 +35,7 @@ class ParkingBoyFacts {
         Car actual = packingBoy.fetch(ticket);
         //then
         assertNotNull(actual);
-        assertEquals(car,actual);
+        assertEquals(car, actual);
     }
 
 
@@ -56,7 +55,7 @@ class ParkingBoyFacts {
         Car actual = packingBoy.fetch(ticket.get(0));
         //then
         assertNotNull(actual);
-        assertEquals(cars[0],actual);
+        assertEquals(cars[0], actual);
     }
 
 
@@ -89,5 +88,22 @@ class ParkingBoyFacts {
         Car actual = packingBoy.fetch(ticket);
         //then
         assertNull(actual);
+    }
+
+    @Test
+    void should_return_null_when_packing_car_given_more_than_10_cars() {
+        //given
+
+        PackingLot packingLot = new PackingLot();
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        //when
+        for (int i = 0; i < 11; i++) {
+            PackingTicket ticket = packingBoy.parking(new Car());
+            if (i >= 10) {
+                //then
+                assertNull(ticket);
+            }
+        }
+
     }
 }
