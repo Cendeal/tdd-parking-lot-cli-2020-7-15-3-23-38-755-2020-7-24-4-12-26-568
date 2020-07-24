@@ -7,4 +7,8 @@ public class PackingBoy {
     public PackingTicket parking(Car car) {
         return new PackingTicket(car);
     }
+
+    public Car fetch(PackingTicket ticket) {
+        return null;
+    }
 }
