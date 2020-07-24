@@ -15,6 +15,6 @@ public class PackingLot {
     }
 
     public Car getCar(PackingTicket ticket){
-        return this.ground.get(ticket);
+        return this.ground.remove(ticket);
     }
 }
