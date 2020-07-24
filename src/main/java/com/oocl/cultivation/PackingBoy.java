@@ -5,6 +5,6 @@ public class PackingBoy {
     }
 
     public PackingTicket parking(Car car) {
-        return null;
+        return new PackingTicket(car);
     }
 }
