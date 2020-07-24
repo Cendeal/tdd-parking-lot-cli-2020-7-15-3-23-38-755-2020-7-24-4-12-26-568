@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ParkingBoyFacts {
     @Test
-    void should_return_car_when_packing_car_given_car() {
+    void should_return_ticket_when_packing_car_given_car() {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -23,7 +23,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_packing_ticket_when_fetching_car_given_packing_ticket() {
+    void should_return_car_when_fetching_car_given_packing_ticket() {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
