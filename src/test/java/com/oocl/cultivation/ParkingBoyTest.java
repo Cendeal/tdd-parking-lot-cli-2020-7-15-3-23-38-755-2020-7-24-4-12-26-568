@@ -1,9 +1,5 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.PackingBoy;
-import com.oocl.cultivation.PackingLot;
-import com.oocl.cultivation.PackingTicket;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
