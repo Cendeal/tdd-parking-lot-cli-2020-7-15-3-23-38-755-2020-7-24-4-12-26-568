@@ -1,14 +1,17 @@
 package com.oocl.cultivation;
 
 public class PackingBoy {
+    private final PackingLot packingLot;
     public PackingBoy(PackingLot packingLot) {
+        this.packingLot = packingLot;
     }
 
     public PackingTicket parking(Car car) {
-        return new PackingTicket(car);
+
+        return this.packingLot.packACar(car);
     }
 
     public Car fetch(PackingTicket ticket) {
-        return null;
+        return this.packingLot.getCar(ticket);
     }
 }
