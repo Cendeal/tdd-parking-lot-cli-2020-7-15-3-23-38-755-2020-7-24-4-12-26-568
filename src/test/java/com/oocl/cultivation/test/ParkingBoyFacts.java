@@ -6,6 +6,9 @@ import com.oocl.cultivation.PackingLot;
 import com.oocl.cultivation.PackingTicket;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -35,5 +38,25 @@ class ParkingBoyFacts {
         //then
         assertNotNull(actual);
         assertEquals(car,actual);
+    }
+
+
+    @Test
+    void should_return_tickets_when_parking_cars_given_cars() {
+        //given
+        Car[] cars = {
+                new Car(),
+                new Car(),
+                new Car()
+        };
+        PackingLot packingLot = new PackingLot();
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        List<PackingTicket> ticket = packingBoy.parking(cars);
+
+        //when
+        Car actual = packingBoy.fetch(ticket.get(0));
+        //then
+        assertNotNull(actual);
+        assertEquals(cars[0],actual);
     }
 }

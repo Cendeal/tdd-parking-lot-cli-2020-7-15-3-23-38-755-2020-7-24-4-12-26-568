@@ -1,7 +1,11 @@
 package com.oocl.cultivation;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class PackingBoy {
     private final PackingLot packingLot;
+
     public PackingBoy(PackingLot packingLot) {
         this.packingLot = packingLot;
     }
@@ -13,5 +17,10 @@ public class PackingBoy {
 
     public Car fetch(PackingTicket ticket) {
         return this.packingLot.getCar(ticket);
+    }
+
+    public List<PackingTicket> parking(Car[] cars) {
+
+        return null;
     }
 }
