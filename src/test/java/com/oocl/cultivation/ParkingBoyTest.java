@@ -1,4 +1,4 @@
-package com.oocl.cultivation.test;
+package com.oocl.cultivation;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.PackingBoy;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ParkingBoyFacts {
+class ParkingBoyTest {
     @Test
     void should_return_ticket_when_packing_car_given_car() {
         //given
