@@ -2,8 +2,6 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
@@ -36,22 +34,24 @@ class ParkingBoyTest {
 
 
     @Test
-    void should_return_tickets_when_parking_cars_given_cars() {
+    void should_return_right_car_witch_right_ticket_when_parking_multi_cars_given_cars() {
         //given
-        Car[] cars = {
-                new Car(),
-                new Car(),
-                new Car()
-        };
         PackingLot packingLot = new PackingLot();
         PackingBoy packingBoy = new PackingBoy(packingLot);
-        List<PackingTicket> ticket = packingBoy.parking(cars);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        PackingTicket ticket1 = packingBoy.parking(car1);
+        PackingTicket ticket2 = packingBoy.parking(car2);
 
         //when
-        Car actual = packingBoy.fetch(ticket.get(0));
+        Car fetchCar1 = packingBoy.fetch(ticket1);
+        Car fetchCar2 = packingBoy.fetch(ticket2);
         //then
-        assertNotNull(actual);
-        assertEquals(cars[0], actual);
+        assertNotNull(fetchCar1);
+        assertNotNull(fetchCar2);
+        assertNotEquals(fetchCar1, fetchCar2);
+        assertEquals(car1, fetchCar1);
+        assertEquals(car2, fetchCar2);
     }
 
 
@@ -64,11 +64,11 @@ class ParkingBoyTest {
         PackingTicket ticket = packingBoy.parking(car);
 
         //when
-        Car actual = packingBoy.fetch(null);
-        Car actual_2 = packingBoy.fetch(new PackingTicket());
+        Car car_null = packingBoy.fetch(null);
+        Car car_new_ticket = packingBoy.fetch(new PackingTicket());
         //then
-        assertNull(actual);
-        assertNull(actual_2);
+        assertNull(car_null);
+        assertNull(car_new_ticket);
     }
 
     @Test
@@ -81,25 +81,22 @@ class ParkingBoyTest {
 
         //when
         packingBoy.fetch(ticket);
-        Car actual = packingBoy.fetch(ticket);
+        Car fetchedCar = packingBoy.fetch(ticket);
         //then
-        assertNull(actual);
+        assertNull(fetchedCar);
     }
 
     @Test
     void should_return_null_when_packing_car_given_more_than_10_cars() {
         //given
-
         PackingLot packingLot = new PackingLot();
         PackingBoy packingBoy = new PackingBoy(packingLot);
         //when
-        for (int i = 0; i < 11; i++) {
-            PackingTicket ticket = packingBoy.parking(new Car());
-            if (i >= 10) {
-                //then
-                assertNull(ticket);
-            }
+        for (int i = 0; i < 10; i++) {
+            packingBoy.parking(new Car());
         }
-
+        PackingTicket ticket = packingBoy.parking(new Car());
+        //then
+        assertNull(ticket);
     }
 }

@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PackingLot {
-    private Map<PackingTicket, Car> ground;
-    private int capacity;
+    private final Map<PackingTicket, Car> ground;
+    private final int capacity;
 
     public PackingLot() {
         this.ground = new HashMap<>();
@@ -19,7 +19,6 @@ public class PackingLot {
             return ticket;
         }
         return null;
-
     }
 
     public Car getCar(PackingTicket ticket) {
