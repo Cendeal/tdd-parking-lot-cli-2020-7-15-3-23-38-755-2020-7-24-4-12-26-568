@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
     @Test
@@ -73,7 +72,22 @@ class ParkingBoyFacts {
         Car actual = packingBoy.fetch(null);
         Car actual_2 = packingBoy.fetch(new PackingTicket());
         //then
-        assertEquals(null,actual);
-        assertEquals(null,actual_2);
+        assertNull(actual);
+        assertNull(actual_2);
+    }
+
+    @Test
+    void should_return_null_when_fetching_car_given_has_used_packing_ticket() {
+        //given
+        Car car = new Car();
+        PackingLot packingLot = new PackingLot();
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        PackingTicket ticket = packingBoy.parking(car);
+
+        //when
+        packingBoy.fetch(ticket);
+        Car actual = packingBoy.fetch(ticket);
+        //then
+        assertNull(actual);
     }
 }
