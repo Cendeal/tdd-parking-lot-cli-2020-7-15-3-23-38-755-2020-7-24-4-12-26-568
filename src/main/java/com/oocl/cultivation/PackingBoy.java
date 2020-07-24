@@ -20,7 +20,10 @@ public class PackingBoy {
     }
 
     public List<PackingTicket> parking(Car[] cars) {
-
-        return null;
+        List<PackingTicket> packingTicketList = new LinkedList<>();
+        for (Car car : cars) {
+            packingTicketList.add(this.parking(car));
+        }
+        return packingTicketList;
     }
 }
