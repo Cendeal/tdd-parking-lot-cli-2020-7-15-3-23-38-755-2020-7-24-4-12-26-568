@@ -59,4 +59,21 @@ class ParkingBoyFacts {
         assertNotNull(actual);
         assertEquals(cars[0],actual);
     }
+
+
+    @Test
+    void should_return_null_when_fetching_car_given_wrong_ticket() {
+        //given
+        Car car = new Car();
+        PackingLot packingLot = new PackingLot();
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        PackingTicket ticket = packingBoy.parking(car);
+
+        //when
+        Car actual = packingBoy.fetch(null);
+        Car actual_2 = packingBoy.fetch(new PackingTicket());
+        //then
+        assertEquals(null,actual);
+        assertEquals(null,actual_2);
+    }
 }
