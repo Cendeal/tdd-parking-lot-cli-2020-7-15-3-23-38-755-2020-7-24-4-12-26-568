@@ -54,15 +54,15 @@ class ParkingBoyTest {
         PackingTicket ticket = packingBoy.parking(car);
 
         //when
-        ProvideTicketException ticketException = assertThrows(ProvideTicketException.class,()->{
+        ProvideTicketException ticketException = assertThrows(ProvideTicketException.class, () -> {
             Car actual = packingBoy.fetch(null);
         });
         //then
-        assertEquals("Please provide your parking ticket.",ticketException.getMessage());
+        assertEquals("Please provide your parking ticket.", ticketException.getMessage());
     }
 
     @Test
-    void should_return_true_when_add_packing_lot_given_packing_lot(){
+    void should_return_true_when_add_packing_lot_given_packing_lot() {
         //given
         PackingLot packingLot = mock(PackingLot.class);
         PackingBoy packingBoy = new PackingBoy(packingLot);
@@ -88,7 +88,7 @@ class ParkingBoyTest {
         //when
         PackingTicket actual_ticket = packingBoy.parking(car);
         //then
-        assertEquals(packingTicket,actual_ticket);
+        assertEquals(packingTicket, actual_ticket);
     }
 
     @Test
@@ -106,6 +106,22 @@ class ParkingBoyTest {
         //when
         Car actual_car = packingBoy.fetch(packingTicket);
         //then
-        assertEquals(car,actual_car);
+        assertEquals(car, actual_car);
+    }
+
+    @Test
+    void should_throw_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        PackingLot packingLot = mock(PackingLot.class);
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        for (int i = 0; i < 10; i++) {
+            packingBoy.parking(new Car());
+        }
+        //when
+        NoPositionException exception = assertThrows(NoPositionException.class, () -> {
+            packingBoy.parking(new Car());
+        });
+        //then
+        assertEquals("Not enough position.", exception.getMessage());
     }
 }
