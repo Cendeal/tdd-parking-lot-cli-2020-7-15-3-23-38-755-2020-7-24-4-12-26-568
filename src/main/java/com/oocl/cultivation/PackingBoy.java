@@ -40,4 +40,8 @@ public class PackingBoy {
     public boolean addPackingLot(PackingLot packingLot2) {
         return this.packingLots.add(packingLot2);
     }
+
+    public List<PackingLot> getPackingLots() {
+        return packingLots;
+    }
 }
