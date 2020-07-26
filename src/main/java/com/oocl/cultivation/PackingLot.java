@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exception.NoPositionException;
 import com.oocl.cultivation.exception.UnrecognizedException;
 
 import java.util.HashMap;
@@ -14,13 +15,13 @@ public class PackingLot {
         this.capacity = 10;
     }
 
-    public PackingTicket packACar(Car car) {
+    public PackingTicket packACar(Car car) throws NoPositionException {
         if (this.ground.size() < this.capacity) {
             PackingTicket ticket = new PackingTicket();
             this.ground.put(ticket, car);
             return ticket;
         }
-        return null;
+        throw new NoPositionException();
     }
 
     public Car getCar(PackingTicket ticket) throws UnrecognizedException {

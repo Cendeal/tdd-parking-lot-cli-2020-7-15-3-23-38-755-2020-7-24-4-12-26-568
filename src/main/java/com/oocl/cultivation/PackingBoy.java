@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 
+import com.oocl.cultivation.exception.NoPositionException;
 import com.oocl.cultivation.exception.ProvideTicketException;
 import com.oocl.cultivation.exception.UnrecognizedException;
 
@@ -11,7 +12,7 @@ public class PackingBoy {
         this.packingLot = packingLot;
     }
 
-    public PackingTicket parking(Car car) {
+    public PackingTicket parking(Car car) throws NoPositionException {
         return this.packingLot.packACar(car);
     }
 

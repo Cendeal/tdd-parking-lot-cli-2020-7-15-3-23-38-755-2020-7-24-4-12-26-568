@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 class PackingLotTest {
 
     @Test
-    void should_return_ticket_when_park_car_given_car() {
+    void should_return_ticket_when_park_car_given_car() throws NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -22,7 +22,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_car_when_get_car_given_packing_ticket() throws UnrecognizedException {
+    void should_return_car_when_get_car_given_packing_ticket() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -36,7 +36,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_right_car_witch_right_ticket_when_park_multi_cars_given_cars() throws UnrecognizedException {
+    void should_return_right_car_witch_right_ticket_when_park_multi_cars_given_cars() throws UnrecognizedException, NoPositionException {
         //given
         PackingLot packingLot = new PackingLot();
         Car car1 = new Car();
@@ -56,7 +56,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_throw_error_when_get_car_given_has_used_packing_ticket() throws UnrecognizedException {
+    void should_throw_error_when_get_car_given_has_used_packing_ticket() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -73,7 +73,7 @@ class PackingLotTest {
 
 
     @Test
-    void should_throw_error_when_get_car_given_wrong_ticket() throws UnrecognizedException {
+    void should_throw_error_when_get_car_given_wrong_ticket() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -89,7 +89,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_throw_error_when_get_car_given_null() throws UnrecognizedException {
+    void should_throw_error_when_get_car_given_null() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -104,7 +104,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_throw_error_when_pack_car_given_more_than_10_cars() {
+    void should_throw_error_when_pack_car_given_more_than_10_cars() throws NoPositionException {
         //given
         PackingLot packingLot = new PackingLot();
         //when
