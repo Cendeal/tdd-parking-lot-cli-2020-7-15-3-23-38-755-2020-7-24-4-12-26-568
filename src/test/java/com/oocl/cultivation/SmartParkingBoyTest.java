@@ -60,6 +60,8 @@ public class SmartParkingBoyTest {
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         SmartParkingBoy packingBoy = new SmartParkingBoy(packingLot);
+        given(packingLot.getAvailableSize()).willReturn(10);
+
         PackingTicket ticket = packingBoy.parking(car);
 
         //when
