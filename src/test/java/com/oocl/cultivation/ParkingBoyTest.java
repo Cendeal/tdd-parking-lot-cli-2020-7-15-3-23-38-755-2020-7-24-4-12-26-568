@@ -90,4 +90,22 @@ class ParkingBoyTest {
         //then
         assertEquals(packingTicket,actual_ticket);
     }
+
+    @Test
+    void should_return_cat_when_fetch_car_given_more_than_10_cars_to_packing() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        PackingLot packingLot = mock(PackingLot.class);
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        PackingLot packingLot2 = mock(PackingLot.class);
+        packingBoy.addPackingLot(packingLot2);
+        Car car = new Car();
+        given(packingLot.packACar(car)).willThrow(NoPositionException.class);
+        PackingTicket packingTicket = mock(PackingTicket.class);
+        given(packingLot2.packACar(car)).willReturn(packingTicket);
+        given(packingLot2.getCar(packingTicket)).willReturn(car);
+        //when
+        Car actual_car = packingBoy.fetch(packingTicket);
+        //then
+        assertEquals(car,actual_car);
+    }
 }
