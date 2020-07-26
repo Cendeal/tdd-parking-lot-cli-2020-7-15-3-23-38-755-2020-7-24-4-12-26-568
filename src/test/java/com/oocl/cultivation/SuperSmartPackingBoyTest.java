@@ -15,9 +15,9 @@ public class SuperSmartPackingBoyTest {
         PackingLot packingLot2 = mock(PackingLot.class);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
-        given(packingLot1.getSize()).willReturn(8);
+        given(packingLot1.getAvailableSize()).willReturn(8);
         given(packingLot1.getCapacity()).willReturn(10);
-        given(packingLot2.getSize()).willReturn(10);
+        given(packingLot2.getAvailableSize()).willReturn(10);
         given(packingLot2.getCapacity()).willReturn(10);
 
         //when

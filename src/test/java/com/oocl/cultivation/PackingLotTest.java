@@ -125,8 +125,18 @@ class PackingLotTest {
         PackingLot packingLot = new PackingLot();
         packingLot.packACar(car);
         //when
-        int actual = packingLot.getSize();
+        int actual = packingLot.getAvailableSize();
         //then
         assertEquals(9,actual);
+    }
+
+    @Test
+    public void should_return_10_when_getCapacity_given_packing_lot() {
+        //given
+        PackingLot packingLot = new PackingLot();
+        //when
+        int actual = packingLot.getCapacity();
+        //then
+        assertEquals(10,actual);
     }
 }

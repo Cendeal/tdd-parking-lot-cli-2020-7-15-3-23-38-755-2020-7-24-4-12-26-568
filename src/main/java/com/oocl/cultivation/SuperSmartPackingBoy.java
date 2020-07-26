@@ -8,7 +8,7 @@ public class SuperSmartPackingBoy extends PackingBoy {
     public PackingLot getLagerLot() {
         PackingLot current = null;
         for (PackingLot packingLot : this.getPackingLots()) {
-            if (current == null || packingLot.getSize() / packingLot.getCapacity() > current.getSize() / current.getCapacity())
+            if (current == null || packingLot.getAvailableSize() / packingLot.getCapacity() > current.getAvailableSize() / current.getCapacity())
                 current = packingLot;
         }
         return current;

@@ -31,7 +31,7 @@ public class PackingLot {
         return this.ground.remove(ticket);
     }
 
-    public int getSize() {
+    public int getAvailableSize() {
         return this.capacity - this.ground.size();
     }
 

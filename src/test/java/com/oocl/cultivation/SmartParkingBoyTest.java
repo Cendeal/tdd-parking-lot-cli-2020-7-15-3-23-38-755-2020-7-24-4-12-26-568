@@ -16,8 +16,8 @@ public class SmartParkingBoyTest {
         PackingLot plot2 = mock(PackingLot.class);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(plot1);
         smartParkingBoy.addPackingLot(plot2);
-        given(plot1.getSize()).willReturn(2);
-        given(plot2.getSize()).willReturn(4);
+        given(plot1.getAvailableSize()).willReturn(2);
+        given(plot2.getAvailableSize()).willReturn(4);
 
         //when
         PackingLot packingLot_target = smartParkingBoy.getMoreEmptyPlot();
@@ -34,8 +34,8 @@ public class SmartParkingBoyTest {
         PackingLot plot2 = mock(PackingLot.class);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(plot1);
         smartParkingBoy.addPackingLot(plot2);
-        given(plot1.getSize()).willReturn(2);
-        given(plot2.getSize()).willReturn(4);
+        given(plot1.getAvailableSize()).willReturn(2);
+        given(plot2.getAvailableSize()).willReturn(4);
 
         //when
         PackingTicket plot1_ticket= mock(PackingTicket.class);

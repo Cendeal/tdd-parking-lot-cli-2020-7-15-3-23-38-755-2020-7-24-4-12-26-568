@@ -10,7 +10,7 @@ public class SmartParkingBoy extends PackingBoy{
     public PackingLot getMoreEmptyPlot() {
         PackingLot packingLot = null;
         for(PackingLot lot:this.getPackingLots()){
-            if(packingLot == null||packingLot.getSize()<lot.getSize()){
+            if(packingLot == null||packingLot.getAvailableSize()<lot.getAvailableSize()){
                 packingLot = lot;
             }
         }
