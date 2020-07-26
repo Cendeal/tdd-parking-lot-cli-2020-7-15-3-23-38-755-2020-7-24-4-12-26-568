@@ -30,4 +30,8 @@ public class PackingLot {
         }
         return this.ground.remove(ticket);
     }
+
+    public int getSize() {
+        return this.ground.size();
+    }
 }
