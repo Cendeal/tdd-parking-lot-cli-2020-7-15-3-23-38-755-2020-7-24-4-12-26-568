@@ -16,8 +16,18 @@ public class PackingBoy {
         this.packingLots.add(packingLot);
     }
 
-    public PackingTicket parking(Car car) throws NoPositionException {
-        return this.packingLots.get(0).packACar(car);
+    public PackingTicket parking(Car car) {
+        PackingTicket ticket = null;
+        for (PackingLot packingLot : this.packingLots) {
+            try {
+                ticket = packingLot.packACar(car);
+                if (ticket != null) {
+                    break;
+                }
+            } catch (NoPositionException ignored) {
+            }
+        }
+        return ticket;
     }
 
     public Car fetch(PackingTicket ticket) throws UnrecognizedException, ProvideTicketException {

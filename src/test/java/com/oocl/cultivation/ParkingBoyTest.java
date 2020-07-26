@@ -75,7 +75,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_ticket_when_packing_car_given_plot_1_has_no_position_plot2_has_position() throws NoPositionException {
+    void should_return_ticket_when_packing_car_given_plot1_has_no_position_plot2_has_position() throws NoPositionException {
         //given
         PackingLot packingLot = mock(PackingLot.class);
         PackingBoy packingBoy = new PackingBoy(packingLot);

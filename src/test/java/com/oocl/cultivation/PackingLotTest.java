@@ -73,7 +73,7 @@ class PackingLotTest {
 
 
     @Test
-    void should_throw_error_when_get_car_given_wrong_ticket() throws UnrecognizedException, NoPositionException {
+    void should_throw_error_when_get_car_given_wrong_ticket() throws NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -89,7 +89,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_throw_error_when_get_car_given_null() throws UnrecognizedException, NoPositionException {
+    void should_throw_error_when_get_car_given_null() throws NoPositionException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
