@@ -97,4 +97,19 @@ class PackingLotTest {
         //then
         assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
+
+    @Test
+    void should_throw_error_when_get_car_given_null() throws UnrecognizedException {
+        //given
+        Car car = new Car();
+        PackingLot packingLot = new PackingLot();
+        PackingTicket ticket = packingLot.packACar(car);
+
+        //when
+        UnrecognizedException exception = assertThrows(UnrecognizedException.class,()->{
+            Car fetchedCar = packingLot.getCar(null);
+        });
+        //then
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+    }
 }
