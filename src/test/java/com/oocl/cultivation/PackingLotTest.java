@@ -6,45 +6,28 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PackingLotTest {
     @Test
-    void should_return_null_when_pack_car_given_more_than_10_cars() {
+    void should_return_ticket_when_park_car_given_car() {
         //given
+        Car car = new Car();
         PackingLot packingLot = new PackingLot();
         //when
-        for (int i = 0; i < 10; i++) {
-            packingLot.packACar(new Car());
-        }
-        PackingTicket ticket = packingLot.packACar(new Car());
+        PackingTicket ticket = packingLot.packACar(car);
         //then
-        assertNull(ticket);
+        assertNotNull(ticket);
     }
 
     @Test
-    void should_return_null_when_get_car_given_has_used_packing_ticket() {
+    void should_return_car_when_get_car_given_packing_ticket() {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
         PackingTicket ticket = packingLot.packACar(car);
 
         //when
-        packingLot.getCar(ticket);
-        Car fetchedCar = packingLot.getCar(ticket);
+        Car actual = packingLot.getCar(ticket);
         //then
-        assertNull(fetchedCar);
-    }
-
-    @Test
-    void should_return_null_when_get_car_given_wrong_ticket() {
-        //given
-        Car car = new Car();
-        PackingLot packingLot = new PackingLot();
-        PackingTicket ticket = packingLot.packACar(car);
-
-        //when
-        Car car_null = packingLot.getCar(null);
-        Car car_new_ticket = packingLot.getCar(new PackingTicket());
-        //then
-        assertNull(car_null);
-        assertNull(car_new_ticket);
+        assertNotNull(actual);
+        assertEquals(car, actual);
     }
 
     @Test
@@ -68,27 +51,44 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_ticket_when_park_car_given_car() {
+    void should_return_null_when_get_car_given_has_used_packing_ticket() {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
-        //when
         PackingTicket ticket = packingLot.packACar(car);
+
+        //when
+        packingLot.getCar(ticket);
+        Car fetchedCar = packingLot.getCar(ticket);
         //then
-        assertNotNull(ticket);
+        assertNull(fetchedCar);
     }
 
     @Test
-    void should_return_car_when_get_car_given_packing_ticket() {
+    void should_return_null_when_pack_car_given_more_than_10_cars() {
+        //given
+        PackingLot packingLot = new PackingLot();
+        //when
+        for (int i = 0; i < 10; i++) {
+            packingLot.packACar(new Car());
+        }
+        PackingTicket ticket = packingLot.packACar(new Car());
+        //then
+        assertNull(ticket);
+    }
+
+    @Test
+    void should_return_null_when_get_car_given_wrong_ticket() {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
         PackingTicket ticket = packingLot.packACar(car);
 
         //when
-        Car actual = packingLot.getCar(ticket);
+        Car car_null = packingLot.getCar(null);
+        Car car_new_ticket = packingLot.getCar(new PackingTicket());
         //then
-        assertNotNull(actual);
-        assertEquals(car, actual);
+        assertNull(car_null);
+        assertNull(car_new_ticket);
     }
 }
