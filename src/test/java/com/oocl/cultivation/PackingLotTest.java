@@ -69,18 +69,6 @@ class PackingLotTest {
         assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 
-    @Test
-    void should_return_null_when_pack_car_given_more_than_10_cars() {
-        //given
-        PackingLot packingLot = new PackingLot();
-        //when
-        for (int i = 0; i < 10; i++) {
-            packingLot.packACar(new Car());
-        }
-        PackingTicket ticket = packingLot.packACar(new Car());
-        //then
-        assertNull(ticket);
-    }
 
     @Test
     void should_throw_error_when_get_car_given_wrong_ticket() throws UnrecognizedException {
@@ -111,5 +99,18 @@ class PackingLotTest {
         });
         //then
         assertEquals("Unrecognized parking ticket.",exception.getMessage());
+    }
+
+    @Test
+    void should_return_null_when_pack_car_given_more_than_10_cars() {
+        //given
+        PackingLot packingLot = new PackingLot();
+        //when
+        for (int i = 0; i < 10; i++) {
+            packingLot.packACar(new Car());
+        }
+        PackingTicket ticket = packingLot.packACar(new Car());
+        //then
+        assertNull(ticket);
     }
 }
