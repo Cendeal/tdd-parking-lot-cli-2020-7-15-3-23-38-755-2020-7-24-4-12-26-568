@@ -16,7 +16,7 @@ public class PackingBoy {
         this.packingLots.add(packingLot);
     }
 
-    public PackingTicket parking(Car car) {
+    public PackingTicket parking(Car car) throws NoPositionException {
         PackingTicket ticket = null;
         for (PackingLot packingLot : this.packingLots) {
             try {
