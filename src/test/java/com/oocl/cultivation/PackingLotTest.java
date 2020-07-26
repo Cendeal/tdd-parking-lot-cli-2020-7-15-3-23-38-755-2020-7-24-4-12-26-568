@@ -4,6 +4,7 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class PackingLotTest {
 
@@ -82,17 +83,18 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_null_when_get_car_given_wrong_ticket() throws UnrecognizedException {
+    void should_throw_error_when_get_car_given_wrong_ticket() throws UnrecognizedException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
         PackingTicket ticket = packingLot.packACar(car);
+        PackingTicket ticket1 = mock(PackingTicket.class);
 
         //when
-        Car car_null = packingLot.getCar(null);
-        Car car_new_ticket = packingLot.getCar(new PackingTicket());
+        UnrecognizedException exception = assertThrows(UnrecognizedException.class,()->{
+            Car fetchedCar = packingLot.getCar(ticket1);
+        });
         //then
-        assertNull(car_null);
-        assertNull(car_new_ticket);
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 }
