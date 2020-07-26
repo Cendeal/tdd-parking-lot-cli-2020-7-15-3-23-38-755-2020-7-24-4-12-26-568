@@ -1,4 +1,4 @@
-package com.oocl.cultivation;
+package com.oocl.cultivation.exception;
 
 public class UnrecognizedException extends Exception{
     public UnrecognizedException(){
