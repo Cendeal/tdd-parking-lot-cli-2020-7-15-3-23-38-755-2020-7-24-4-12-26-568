@@ -39,4 +39,23 @@ class ParkingBoyTest {
         assertEquals(car, actual);
     }
 
+    @Test
+    void should_throw_error_when_fetching_car_given_null() throws UnrecognizedException {
+        //given
+        Car car = new Car();
+        PackingLot packingLot = mock(PackingLot.class);
+        PackingTicket ticket_mock = mock(PackingTicket.class);
+        given(packingLot.packACar(car)).willReturn(ticket_mock);
+        given(packingLot.getCar(ticket_mock)).willReturn(car);
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        PackingTicket ticket = packingBoy.parking(car);
+
+        //when
+        ProvideTicketException ticketException = assertThrows(ProvideTicketException.class,()->{
+            Car actual = packingBoy.fetch(null);
+        });
+        //then
+        assertEquals("Please provide your parking ticket.",ticketException.getMessage());
+
+    }
 }
