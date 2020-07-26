@@ -1,10 +1,12 @@
 package com.oocl.cultivation;
 
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PackingLotTest {
+
     @Test
     void should_return_ticket_when_park_car_given_car() {
         //given
@@ -51,7 +53,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_null_when_get_car_given_has_used_packing_ticket() {
+    void should_throw_error_when_get_car_given_has_used_packing_ticket() {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -59,9 +61,11 @@ class PackingLotTest {
 
         //when
         packingLot.getCar(ticket);
-        Car fetchedCar = packingLot.getCar(ticket);
+        UnrecognizedException exception = assertThrows(UnrecognizedException.class,()->{
+            Car fetchedCar = packingLot.getCar(ticket);
+        });
         //then
-        assertNull(fetchedCar);
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 
     @Test
