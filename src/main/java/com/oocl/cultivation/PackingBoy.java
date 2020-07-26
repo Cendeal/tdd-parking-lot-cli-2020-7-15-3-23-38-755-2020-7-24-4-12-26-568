@@ -12,7 +12,10 @@ public class PackingBoy {
         return this.packingLot.packACar(car);
     }
 
-    public Car fetch(PackingTicket ticket) throws UnrecognizedException {
+    public Car fetch(PackingTicket ticket) throws UnrecognizedException, ProvideTicketException {
+        if (ticket == null) {
+            throw new ProvideTicketException();
+        }
         return this.packingLot.getCar(ticket);
     }
 }

@@ -22,7 +22,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_car_when_fetching_car_given_packing_ticket() throws UnrecognizedException {
+    void should_return_car_when_fetching_car_given_packing_ticket() throws UnrecognizedException, ProvideTicketException {
         //given
         Car car = new Car();
         PackingLot packingLot = mock(PackingLot.class);
