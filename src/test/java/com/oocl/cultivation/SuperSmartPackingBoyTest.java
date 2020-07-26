@@ -74,4 +74,18 @@ public class SuperSmartPackingBoyTest {
         //then
         assertEquals("Please provide your parking ticket.",ticketException.getMessage());
     }
+
+    @Test
+    void should_throw_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        PackingLot packingLot = mock(PackingLot.class);
+        SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
+        given(packingLot.getAvailableSize()).willReturn(0);
+        //when
+        NoPositionException exception = assertThrows(NoPositionException.class, () -> {
+            packingBoy.parking(new Car());
+        });
+        //then
+        assertEquals("Not enough position.", exception.getMessage());
+    }
 }
