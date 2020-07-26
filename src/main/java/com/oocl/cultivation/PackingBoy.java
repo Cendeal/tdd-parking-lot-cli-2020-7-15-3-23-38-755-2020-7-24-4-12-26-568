@@ -12,7 +12,7 @@ public class PackingBoy {
         return this.packingLot.packACar(car);
     }
 
-    public Car fetch(PackingTicket ticket) {
+    public Car fetch(PackingTicket ticket) throws UnrecognizedException {
         return this.packingLot.getCar(ticket);
     }
 }

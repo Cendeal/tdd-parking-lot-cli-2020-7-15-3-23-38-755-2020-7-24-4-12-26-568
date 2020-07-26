@@ -21,7 +21,10 @@ public class PackingLot {
         return null;
     }
 
-    public Car getCar(PackingTicket ticket) {
+    public Car getCar(PackingTicket ticket) throws UnrecognizedException {
+        if(!this.ground.containsKey(ticket)){
+            throw new UnrecognizedException();
+        }
         return this.ground.remove(ticket);
     }
 }

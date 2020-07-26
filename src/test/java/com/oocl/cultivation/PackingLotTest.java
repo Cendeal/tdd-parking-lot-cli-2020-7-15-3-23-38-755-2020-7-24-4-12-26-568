@@ -19,7 +19,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_car_when_get_car_given_packing_ticket() {
+    void should_return_car_when_get_car_given_packing_ticket() throws UnrecognizedException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -33,7 +33,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_right_car_witch_right_ticket_when_park_multi_cars_given_cars() {
+    void should_return_right_car_witch_right_ticket_when_park_multi_cars_given_cars() throws UnrecognizedException {
         //given
         PackingLot packingLot = new PackingLot();
         Car car1 = new Car();
@@ -53,7 +53,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_throw_error_when_get_car_given_has_used_packing_ticket() {
+    void should_throw_error_when_get_car_given_has_used_packing_ticket() throws UnrecognizedException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
@@ -82,7 +82,7 @@ class PackingLotTest {
     }
 
     @Test
-    void should_return_null_when_get_car_given_wrong_ticket() {
+    void should_return_null_when_get_car_given_wrong_ticket() throws UnrecognizedException {
         //given
         Car car = new Car();
         PackingLot packingLot = new PackingLot();
