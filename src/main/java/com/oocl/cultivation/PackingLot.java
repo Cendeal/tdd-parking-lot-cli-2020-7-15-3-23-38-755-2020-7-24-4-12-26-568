@@ -32,6 +32,6 @@ public class PackingLot {
     }
 
     public int getSize() {
-        return this.ground.size();
+        return this.capacity - this.ground.size();
     }
 }
