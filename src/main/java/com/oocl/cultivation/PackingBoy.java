@@ -17,17 +17,11 @@ public class PackingBoy {
     }
 
     public PackingTicket parking(Car car) throws NoPositionException {
-        PackingTicket ticket = null;
-        for (PackingLot packingLot : this.packingLots) {
-            try {
-                ticket = packingLot.packACar(car);
-                if (ticket != null) {
-                    break;
-                }
-            } catch (NoPositionException ignored) {
-            }
+        PackingLot packingLot = this.packingLots.stream().filter(lot -> lot.getAvailableSize() > 0).findFirst().orElse(null);
+        if (packingLot != null) {
+            return packingLot.packACar(car);
         }
-        return ticket;
+        throw new NoPositionException();
     }
 
     public Car fetch(PackingTicket ticket) throws UnrecognizedException, ProvideTicketException {

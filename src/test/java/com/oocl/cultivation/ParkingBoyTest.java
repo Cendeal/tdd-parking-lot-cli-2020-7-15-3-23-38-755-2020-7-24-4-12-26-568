@@ -18,6 +18,8 @@ class ParkingBoyTest {
         PackingTicket ticket_mock = mock(PackingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         PackingBoy packingBoy = new PackingBoy(packingLot);
+        given(packingLot.getAvailableSize()).willReturn(10);
+
         //when
         PackingTicket ticket = packingBoy.parking(car);
         //then
@@ -33,6 +35,7 @@ class ParkingBoyTest {
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         PackingBoy packingBoy = new PackingBoy(packingLot);
+        given(packingLot.getAvailableSize()).willReturn(10);
         PackingTicket ticket = packingBoy.parking(car);
 
         //when
@@ -50,6 +53,7 @@ class ParkingBoyTest {
         PackingTicket ticket_mock = mock(PackingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
+        given(packingLot.getAvailableSize()).willReturn(10);
         PackingBoy packingBoy = new PackingBoy(packingLot);
         PackingTicket ticket = packingBoy.parking(car);
 
@@ -84,6 +88,7 @@ class ParkingBoyTest {
         Car car = new Car();
         given(packingLot.packACar(car)).willThrow(NoPositionException.class);
         PackingTicket packingTicket = mock(PackingTicket.class);
+        given(packingLot2.getAvailableSize()).willReturn(10);
         given(packingLot2.packACar(car)).willReturn(packingTicket);
         //when
         PackingTicket actual_ticket = packingBoy.parking(car);
@@ -114,9 +119,7 @@ class ParkingBoyTest {
         //given
         PackingLot packingLot = mock(PackingLot.class);
         PackingBoy packingBoy = new PackingBoy(packingLot);
-        for (int i = 0; i < 10; i++) {
-            packingBoy.parking(new Car());
-        }
+        given(packingLot.getAvailableSize()).willReturn(0);
         //when
         NoPositionException exception = assertThrows(NoPositionException.class, () -> {
             packingBoy.parking(new Car());
