@@ -1,9 +1,12 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.exception.NoPositionException;
+import com.oocl.cultivation.exception.ProvideTicketException;
+import com.oocl.cultivation.exception.UnrecognizedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -46,5 +49,24 @@ public class SmartParkingBoyTest {
 
         //then
         assertEquals(plot2_ticket,actual_ticket);
+    }
+
+    @Test
+    void should_throw_error_when_fetching_car_given_null() throws UnrecognizedException, NoPositionException {
+        //given
+        Car car = new Car();
+        PackingLot packingLot = mock(PackingLot.class);
+        PackingTicket ticket_mock = mock(PackingTicket.class);
+        given(packingLot.packACar(car)).willReturn(ticket_mock);
+        given(packingLot.getCar(ticket_mock)).willReturn(car);
+        SmartParkingBoy packingBoy = new SmartParkingBoy(packingLot);
+        PackingTicket ticket = packingBoy.parking(car);
+
+        //when
+        ProvideTicketException ticketException = assertThrows(ProvideTicketException.class,()->{
+            Car actual = packingBoy.fetch(null);
+        });
+        //then
+        assertEquals("Please provide your parking ticket.",ticketException.getMessage());
     }
 }
