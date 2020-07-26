@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 
+import com.oocl.cultivation.exception.NoPositionException;
 import com.oocl.cultivation.exception.UnrecognizedException;
 import org.junit.jupiter.api.Test;
 
@@ -63,11 +64,11 @@ class PackingLotTest {
 
         //when
         packingLot.getCar(ticket);
-        UnrecognizedException exception = assertThrows(UnrecognizedException.class,()->{
+        UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
             Car fetchedCar = packingLot.getCar(ticket);
         });
         //then
-        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
 
@@ -80,11 +81,11 @@ class PackingLotTest {
         PackingTicket ticket1 = mock(PackingTicket.class);
 
         //when
-        UnrecognizedException exception = assertThrows(UnrecognizedException.class,()->{
+        UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
             Car fetchedCar = packingLot.getCar(ticket1);
         });
         //then
-        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
     @Test
@@ -95,23 +96,25 @@ class PackingLotTest {
         PackingTicket ticket = packingLot.packACar(car);
 
         //when
-        UnrecognizedException exception = assertThrows(UnrecognizedException.class,()->{
+        UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
             Car fetchedCar = packingLot.getCar(null);
         });
         //then
-        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
     @Test
-    void should_return_null_when_pack_car_given_more_than_10_cars() {
+    void should_throw_error_when_pack_car_given_more_than_10_cars() {
         //given
         PackingLot packingLot = new PackingLot();
         //when
         for (int i = 0; i < 10; i++) {
             packingLot.packACar(new Car());
         }
-        PackingTicket ticket = packingLot.packACar(new Car());
+        NoPositionException noPositionException = assertThrows(NoPositionException.class, () -> {
+            PackingTicket ticket = packingLot.packACar(new Car());
+        });
         //then
-        assertNull(ticket);
+        assertEquals("Not enough position.", noPositionException.getMessage());
     }
 }
