@@ -62,7 +62,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_true_when_add_packing_lot_give_packing_lot(){
+    void should_return_true_when_add_packing_lot_given_packing_lot(){
         //given
         PackingLot packingLot = mock(PackingLot.class);
         PackingBoy packingBoy = new PackingBoy(packingLot);
@@ -72,5 +72,22 @@ class ParkingBoyTest {
         boolean actual = packingBoy.addPackingLot(packingLot2);
         //then
         assertTrue(actual);
+    }
+
+    @Test
+    void should_return_ticket_when_packing_car_given_plot_1_has_no_position_plot2_has_position() throws NoPositionException {
+        //given
+        PackingLot packingLot = mock(PackingLot.class);
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        PackingLot packingLot2 = mock(PackingLot.class);
+        packingBoy.addPackingLot(packingLot2);
+        Car car = new Car();
+        given(packingLot.packACar(car)).willThrow(NoPositionException.class);
+        PackingTicket packingTicket = mock(PackingTicket.class);
+        given(packingLot2.packACar(car)).willReturn(packingTicket);
+        //when
+        PackingTicket actual_ticket = packingBoy.parking(car);
+        //then
+        assertEquals(packingTicket,actual_ticket);
     }
 }
