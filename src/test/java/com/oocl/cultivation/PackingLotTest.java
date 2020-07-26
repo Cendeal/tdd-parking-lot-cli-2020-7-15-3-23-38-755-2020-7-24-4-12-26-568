@@ -117,4 +117,16 @@ class PackingLotTest {
         //then
         assertEquals("Not enough position.", noPositionException.getMessage());
     }
+
+    @Test
+    public void should_return_9_when_get_size_given_car_and_packing_after() throws NoPositionException {
+        //given
+        Car car = new Car();
+        PackingLot packingLot = new PackingLot();
+        packingLot.packACar(car);
+        //when
+        int actual = packingLot.getSize();
+        //then
+        assertEquals(9,actual);
+    }
 }
