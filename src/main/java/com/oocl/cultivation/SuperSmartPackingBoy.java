@@ -13,13 +13,14 @@ public class SuperSmartPackingBoy extends PackingBoy {
         if (packingLot != null) {
             return packingLot.packACar(car);
         }
-        return null;
+        throw new NoPositionException();
     }
 
     public PackingLot getLagerLot() {
         PackingLot current = null;
         for (PackingLot packingLot : this.getPackingLots()) {
-            if (current == null || packingLot.getAvailableSize() / packingLot.getCapacity() > current.getAvailableSize() / current.getCapacity())
+            if (packingLot.getAvailableSize() > 0 &&
+                    (current == null || packingLot.getAvailableSize() / packingLot.getCapacity() > current.getAvailableSize() / current.getCapacity()))
                 current = packingLot;
         }
         return current;
