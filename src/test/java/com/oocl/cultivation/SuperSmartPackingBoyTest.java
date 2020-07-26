@@ -14,13 +14,14 @@ public class SuperSmartPackingBoyTest {
         SuperSmartPackingBoy superSmartPackingBoy = new SuperSmartPackingBoy(packingLot1);
         PackingLot packingLot2 = mock(PackingLot.class);
         superSmartPackingBoy.addPackingLot(packingLot2);
+
         given(packingLot1.getSize()).willReturn(8);
         given(packingLot1.getCapacity()).willReturn(10);
         given(packingLot2.getSize()).willReturn(10);
         given(packingLot2.getCapacity()).willReturn(10);
 
         //when
-        PackingLot packingLotActual =superSmartPackingBoy.getLagerLot();
+        PackingLot packingLotActual = superSmartPackingBoy.getLagerLot();
         //then
         assertEquals(packingLot2,packingLotActual);
     }
