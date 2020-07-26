@@ -59,6 +59,18 @@ class ParkingBoyTest {
         });
         //then
         assertEquals("Please provide your parking ticket.",ticketException.getMessage());
+    }
 
+    @Test
+    void should_return_true_when_add_packing_lot_give_packing_lot(){
+        //given
+        PackingLot packingLot = mock(PackingLot.class);
+        PackingBoy packingBoy = new PackingBoy(packingLot);
+        PackingLot packingLot2 = mock(PackingLot.class);
+
+        //when
+        boolean actual = packingBoy.addPackingLot(packingLot2);
+        //then
+        assertTrue(actual);
     }
 }

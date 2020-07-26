@@ -22,4 +22,8 @@ public class PackingBoy {
         }
         return this.packingLot.getCar(ticket);
     }
+
+    public boolean addPackingLot(PackingLot packingLot2) {
+        return false;
+    }
 }
