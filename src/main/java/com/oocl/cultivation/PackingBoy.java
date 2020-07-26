@@ -34,11 +34,18 @@ public class PackingBoy {
         if (ticket == null) {
             throw new ProvideTicketException();
         }
-        return this.packingLots.get(0).getCar(ticket);
+        Car car = null;
+        for (PackingLot packingLot : this.getPackingLots()) {
+            car = packingLot.getCar(ticket);
+            if (car != null) {
+                break;
+            }
+        }
+        return car;
     }
 
-    public boolean addPackingLot(PackingLot packingLot2) {
-        return this.packingLots.add(packingLot2);
+    public boolean addPackingLot(PackingLot packingLot) {
+        return this.packingLots.add(packingLot);
     }
 
     public List<PackingLot> getPackingLots() {
