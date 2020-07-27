@@ -3,13 +3,13 @@ package com.oocl.cultivation;
 import com.oocl.cultivation.exception.NoPositionException;
 
 public class SmartParkingBoy extends ParkingBoy {
-    public SmartParkingBoy(PackingLot plot1) {
+    public SmartParkingBoy(ParkingLot plot1) {
         super(plot1);
     }
 
-    public PackingLot getMoreEmptyPlot() {
-        PackingLot packingLot = null;
-        for (PackingLot lot : this.getPackingLots()) {
+    public ParkingLot getMoreEmptyPlot() {
+        ParkingLot packingLot = null;
+        for (ParkingLot lot : this.getPackingLots()) {
             if (lot.getAvailableSize() > 0
                     && (packingLot == null || packingLot.getAvailableSize() < lot.getAvailableSize())) {
                 packingLot = lot;
@@ -20,7 +20,7 @@ public class SmartParkingBoy extends ParkingBoy {
 
     @Override
     public PackingTicket parking(Car car) throws NoPositionException {
-        PackingLot packingLot = getMoreEmptyPlot();
+        ParkingLot packingLot = getMoreEmptyPlot();
         if (packingLot != null) {
             return packingLot.packACar(car);
         }

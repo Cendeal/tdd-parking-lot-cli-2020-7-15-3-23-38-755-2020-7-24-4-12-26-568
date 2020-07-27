@@ -9,15 +9,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ParkingBoy {
-    private final List<PackingLot> packingLots;
+    private final List<ParkingLot> packingLots;
 
-    public ParkingBoy(PackingLot packingLot) {
+    public ParkingBoy(ParkingLot packingLot) {
         this.packingLots = new LinkedList<>();
         this.packingLots.add(packingLot);
     }
 
     public PackingTicket parking(Car car) throws NoPositionException {
-        PackingLot packingLot = this.packingLots.stream().filter(lot -> lot.getAvailableSize() > 0).findFirst().orElse(null);
+        ParkingLot packingLot = this.packingLots.stream().filter(lot -> lot.getAvailableSize() > 0).findFirst().orElse(null);
         if (packingLot != null) {
             return packingLot.packACar(car);
         }
@@ -29,7 +29,7 @@ public class ParkingBoy {
             throw new ProvideTicketException();
         }
         Car car = null;
-        for (PackingLot packingLot : this.getPackingLots()) {
+        for (ParkingLot packingLot : this.getPackingLots()) {
             car = packingLot.getCar(ticket);
             if (car != null) {
                 break;
@@ -38,11 +38,11 @@ public class ParkingBoy {
         return car;
     }
 
-    public boolean addPackingLot(PackingLot packingLot) {
+    public boolean addPackingLot(ParkingLot packingLot) {
         return this.packingLots.add(packingLot);
     }
 
-    public List<PackingLot> getPackingLots() {
+    public List<ParkingLot> getPackingLots() {
         return packingLots;
     }
 }

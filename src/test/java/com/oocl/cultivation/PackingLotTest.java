@@ -14,7 +14,7 @@ class PackingLotTest {
     void should_return_ticket_when_park_car_given_car() throws NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         //when
         PackingTicket ticket = packingLot.packACar(car);
         //then
@@ -25,7 +25,7 @@ class PackingLotTest {
     void should_return_car_when_get_car_given_packing_ticket() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         PackingTicket ticket = packingLot.packACar(car);
 
         //when
@@ -38,7 +38,7 @@ class PackingLotTest {
     @Test
     void should_return_right_car_witch_right_ticket_when_park_multi_cars_given_cars() throws UnrecognizedException, NoPositionException {
         //given
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         Car car1 = new Car();
         Car car2 = new Car();
         PackingTicket ticket1 = packingLot.packACar(car1);
@@ -59,7 +59,7 @@ class PackingLotTest {
     void should_throw_error_when_get_car_given_has_used_packing_ticket() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         PackingTicket ticket = packingLot.packACar(car);
 
         //when
@@ -76,7 +76,7 @@ class PackingLotTest {
     void should_throw_error_when_get_car_given_wrong_ticket() throws NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         PackingTicket ticket = packingLot.packACar(car);
         PackingTicket ticket1 = mock(PackingTicket.class);
 
@@ -92,7 +92,7 @@ class PackingLotTest {
     void should_throw_error_when_get_car_given_null() throws NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         PackingTicket ticket = packingLot.packACar(car);
 
         //when
@@ -106,7 +106,7 @@ class PackingLotTest {
     @Test
     void should_throw_error_when_pack_car_given_more_than_10_cars() throws NoPositionException {
         //given
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         //when
         for (int i = 0; i < 10; i++) {
             packingLot.packACar(new Car());
@@ -122,7 +122,7 @@ class PackingLotTest {
     public void should_return_9_when_get_size_given_car_and_packing_after() throws NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         packingLot.packACar(car);
         //when
         int actual = packingLot.getAvailableSize();
@@ -133,7 +133,7 @@ class PackingLotTest {
     @Test
     public void should_return_10_when_getCapacity_given_packing_lot() {
         //given
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         //when
         int actual = packingLot.getCapacity();
         //then
@@ -143,7 +143,7 @@ class PackingLotTest {
     @Test
     public void should_return_zero_point_six_when_get_available_position_rate_given_packing_lot() throws NoPositionException {
         //given
-        PackingLot packingLot = new PackingLot();
+        ParkingLot packingLot = new ParkingLot();
         for(int i=0;i<4;i++){
             packingLot.packACar(new Car());
         }

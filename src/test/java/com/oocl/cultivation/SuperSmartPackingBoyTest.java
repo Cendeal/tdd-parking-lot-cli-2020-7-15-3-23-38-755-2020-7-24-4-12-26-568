@@ -15,16 +15,16 @@ public class SuperSmartPackingBoyTest {
     @Test
     public void should_return_large_rate_lot_when_get_lager_lot_given_super_smart_boy() {
         //given
-        PackingLot packingLot1 = mock(PackingLot.class);
+        ParkingLot packingLot1 = mock(ParkingLot.class);
         SuperSmartPackingBoy superSmartPackingBoy = new SuperSmartPackingBoy(packingLot1);
-        PackingLot packingLot2 = mock(PackingLot.class);
+        ParkingLot packingLot2 = mock(ParkingLot.class);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
         given(packingLot1.getAvailablePositionRate()).willReturn(0.6);
         given(packingLot2.getAvailablePositionRate()).willReturn(0.8);
 
         //when
-        PackingLot packingLotActual = superSmartPackingBoy.getLagerLot();
+        ParkingLot packingLotActual = superSmartPackingBoy.getLagerLot();
         //then
         assertEquals(packingLot2, packingLotActual);
     }
@@ -33,8 +33,8 @@ public class SuperSmartPackingBoyTest {
     public void should_return_ticket_from_plot2_when_super_smart_packing_boy_packing_car_given_car() throws NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot1 = mock(PackingLot.class);
-        PackingLot packingLot2 = mock(PackingLot.class);
+        ParkingLot packingLot1 = mock(ParkingLot.class);
+        ParkingLot packingLot2 = mock(ParkingLot.class);
         SuperSmartPackingBoy superSmartPackingBoy = new SuperSmartPackingBoy(packingLot1);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
@@ -56,7 +56,7 @@ public class SuperSmartPackingBoyTest {
     void should_throw_error_when_fetching_car_given_null() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = mock(PackingLot.class);
+        ParkingLot packingLot = mock(ParkingLot.class);
         PackingTicket ticket_mock = mock(PackingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
@@ -75,7 +75,7 @@ public class SuperSmartPackingBoyTest {
     @Test
     void should_throw_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
         //given
-        PackingLot packingLot = mock(PackingLot.class);
+        ParkingLot packingLot = mock(ParkingLot.class);
         SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
         given(packingLot.getAvailablePositionRate()).willReturn(1.0);
         //when

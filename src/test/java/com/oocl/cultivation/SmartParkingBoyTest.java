@@ -15,15 +15,15 @@ public class SmartParkingBoyTest {
     @Test
     public void should_return_plot2_when_get_more_empty_plot_given_smart_parking_boy(){
         //given
-        PackingLot plot1 = mock(PackingLot.class);
-        PackingLot plot2 = mock(PackingLot.class);
+        ParkingLot plot1 = mock(ParkingLot.class);
+        ParkingLot plot2 = mock(ParkingLot.class);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(plot1);
         smartParkingBoy.addPackingLot(plot2);
         given(plot1.getAvailableSize()).willReturn(2);
         given(plot2.getAvailableSize()).willReturn(4);
 
         //when
-        PackingLot packingLot_target = smartParkingBoy.getMoreEmptyPlot();
+        ParkingLot packingLot_target = smartParkingBoy.getMoreEmptyPlot();
 
         //then
         assertEquals(plot2,packingLot_target);
@@ -33,8 +33,8 @@ public class SmartParkingBoyTest {
     public void should_return_ticket_from_plot2_when_smart_packing_boy_packing_car_given_car() throws NoPositionException {
         //given
         Car car= new Car();
-        PackingLot plot1 = mock(PackingLot.class);
-        PackingLot plot2 = mock(PackingLot.class);
+        ParkingLot plot1 = mock(ParkingLot.class);
+        ParkingLot plot2 = mock(ParkingLot.class);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(plot1);
         smartParkingBoy.addPackingLot(plot2);
         given(plot1.getAvailableSize()).willReturn(2);
@@ -55,7 +55,7 @@ public class SmartParkingBoyTest {
     void should_throw_error_when_fetching_car_given_null() throws UnrecognizedException, NoPositionException {
         //given
         Car car = new Car();
-        PackingLot packingLot = mock(PackingLot.class);
+        ParkingLot packingLot = mock(ParkingLot.class);
         PackingTicket ticket_mock = mock(PackingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
@@ -75,7 +75,7 @@ public class SmartParkingBoyTest {
     @Test
     void should_throw_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
         //given
-        PackingLot packingLot = mock(PackingLot.class);
+        ParkingLot packingLot = mock(ParkingLot.class);
         SmartParkingBoy packingBoy = new SmartParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(0);
         //when

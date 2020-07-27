@@ -6,11 +6,11 @@ import com.oocl.cultivation.exception.UnrecognizedException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PackingLot {
+public class ParkingLot {
     private final Map<PackingTicket, Car> ground;
     private final int capacity;
 
-    public PackingLot() {
+    public ParkingLot() {
         this.ground = new HashMap<>();
         this.capacity = 10;
     }
