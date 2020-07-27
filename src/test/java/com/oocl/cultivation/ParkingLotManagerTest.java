@@ -102,4 +102,16 @@ class ParkingLotManagerTest extends ParkingBoy{
         assertEquals(car,fetchCar);
     }
 
+    @Test
+    public void should_return_null_when_specifyPackerParking_given_ticket_give_parker_not_int_manage() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        Car car = new Car();
+        ParkingLotManager parkingLotManager = new ParkingLotManager();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        //when
+        ParkingTicket ticket = parkingLotManager.specifyPackerParking(parkingBoy,car);
+        //then
+        assertNull(ticket);
+    }
+
 }
