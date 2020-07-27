@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ParkingLotManagerTest {
+class ParkingLotManagerTest extends ParkingBoy{
     @Test
     public void should_return_4_when_add_parker_given_4_parker(){
         //given
@@ -38,6 +38,17 @@ class ParkingLotManagerTest {
         Car fetchCar = smartParkingBoy.fetch(parkingTicket);
         assertNotNull(fetchCar);
         assertEquals(parkCar,fetchCar);
+    }
+
+    @Test
+    public void should_return_ticket_when_packing_car_given_car() throws NoPositionException {
+        //given
+        Car car = new Car();
+        ParkingLotManager parkingLotManager = new ParkingLotManager();
+        //when
+        ParkingTicket parkingTicket = parkingLotManager.parking(car);
+        //then
+        assertNotNull(parkingTicket);
     }
 
 }

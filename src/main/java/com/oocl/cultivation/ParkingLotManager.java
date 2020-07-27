@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ParkingLotManager {
+public class ParkingLotManager extends ParkingBoy {
     private final List<ParkAble> parkerList;
 
     public ParkingLotManager() {
+        super();
         this.parkerList = new ArrayList<>();
     }
 
