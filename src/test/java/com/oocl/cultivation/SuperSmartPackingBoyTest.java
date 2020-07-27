@@ -16,7 +16,7 @@ public class SuperSmartPackingBoyTest {
     public void should_return_large_rate_lot_when_get_lager_lot_given_super_smart_boy() {
         //given
         ParkingLot packingLot1 = mock(ParkingLot.class);
-        SuperSmartPackingBoy superSmartPackingBoy = new SuperSmartPackingBoy(packingLot1);
+        SuperSmartParkingBoy superSmartPackingBoy = new SuperSmartParkingBoy(packingLot1);
         ParkingLot packingLot2 = mock(ParkingLot.class);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
@@ -35,7 +35,7 @@ public class SuperSmartPackingBoyTest {
         Car car = new Car();
         ParkingLot packingLot1 = mock(ParkingLot.class);
         ParkingLot packingLot2 = mock(ParkingLot.class);
-        SuperSmartPackingBoy superSmartPackingBoy = new SuperSmartPackingBoy(packingLot1);
+        SuperSmartParkingBoy superSmartPackingBoy = new SuperSmartParkingBoy(packingLot1);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
         given(packingLot1.getAvailablePositionRate()).willReturn(0.6);
@@ -60,7 +60,7 @@ public class SuperSmartPackingBoyTest {
         ParkingTicket ticket_mock = mock(ParkingTicket.class);
         given(packingLot.park(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
-        SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
+        SuperSmartParkingBoy packingBoy = new SuperSmartParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
         ParkingTicket ticket = packingBoy.parking(car);
 
@@ -76,7 +76,7 @@ public class SuperSmartPackingBoyTest {
     void should_throw_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
         //given
         ParkingLot packingLot = mock(ParkingLot.class);
-        SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
+        SuperSmartParkingBoy packingBoy = new SuperSmartParkingBoy(packingLot);
         given(packingLot.getAvailablePositionRate()).willReturn(1.0);
         //when
         NoPositionException exception = assertThrows(NoPositionException.class, () -> {

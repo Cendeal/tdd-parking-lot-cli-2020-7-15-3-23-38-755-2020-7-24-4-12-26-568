@@ -2,8 +2,8 @@ package com.oocl.cultivation;
 
 import com.oocl.cultivation.exception.NoPositionException;
 
-public class SuperSmartPackingBoy extends ParkingBoy {
-    public SuperSmartPackingBoy(ParkingLot packingLot) {
+public class SuperSmartParkingBoy extends ParkingBoy {
+    public SuperSmartParkingBoy(ParkingLot packingLot) {
         super(packingLot);
     }
 
