@@ -86,7 +86,7 @@ class ParkingLotManagerTest extends ParkingBoy{
     }
 
     @Test
-    public void should_return_car_when_fetch_car_given_ticket_when_has_many_parker() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+    public void should_return_car_when_fetch_car_given_ticket_give_has_many_parker() throws NoPositionException, UnrecognizedException, ProvideTicketException {
         //given
         Car car = new Car();
         ParkingLotManager parkingLotManager = new ParkingLotManager();
