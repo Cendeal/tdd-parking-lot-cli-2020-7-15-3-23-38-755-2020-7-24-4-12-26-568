@@ -19,7 +19,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     public ParkingLot getLagerLot() {
         ParkingLot current = null;
         for (ParkingLot packingLot : this.getPackingLots()) {
-            if (packingLot.getAvailablePositionRate() < 1 &&
+            if (packingLot.getAvailablePositionRate() > 0 &&
                     (current == null || packingLot.getAvailablePositionRate() > current.getAvailablePositionRate()))
                 current = packingLot;
         }

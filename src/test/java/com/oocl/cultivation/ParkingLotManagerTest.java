@@ -6,6 +6,8 @@ import com.oocl.cultivation.exception.UnrecognizedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 class ParkingLotManagerTest extends ParkingBoy{
     @Test
@@ -63,6 +65,24 @@ class ParkingLotManagerTest extends ParkingBoy{
         //then
         assertNotNull(fetchCar);
         assertEquals(car,fetchCar);
+    }
+
+    @Test
+    void should_display_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        ParkingLot packingLot = new ParkingLot();
+        SuperSmartParkingBoy packingBoy = new SuperSmartParkingBoy(packingLot);
+        ParkingLotManager manager = new ParkingLotManager();
+        manager.addParker(packingBoy);
+        for(int i=0;i<10;i++){
+            manager.specifyPackerParking(packingBoy,new Car());
+        }
+        //when
+        NoPositionException exception = assertThrows(NoPositionException.class, () -> {
+            manager.specifyPackerParking(packingBoy,new Car());
+        });
+        //then
+        assertEquals("Not enough position.", exception.getMessage());
     }
 
 }
