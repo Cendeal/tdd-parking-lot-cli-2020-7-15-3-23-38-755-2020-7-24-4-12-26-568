@@ -2,7 +2,7 @@ package com.oocl.cultivation;
 
 import com.oocl.cultivation.exception.NoPositionException;
 
-public class SuperSmartPackingBoy extends PackingBoy {
+public class SuperSmartPackingBoy extends ParkingBoy {
     public SuperSmartPackingBoy(PackingLot packingLot) {
         super(packingLot);
     }

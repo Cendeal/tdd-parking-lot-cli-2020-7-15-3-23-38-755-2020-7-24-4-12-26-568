@@ -8,10 +8,10 @@ import com.oocl.cultivation.exception.UnrecognizedException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PackingBoy {
+public class ParkingBoy {
     private final List<PackingLot> packingLots;
 
-    public PackingBoy(PackingLot packingLot) {
+    public ParkingBoy(PackingLot packingLot) {
         this.packingLots = new LinkedList<>();
         this.packingLots.add(packingLot);
     }

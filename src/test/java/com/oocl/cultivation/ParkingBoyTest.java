@@ -17,7 +17,7 @@ class ParkingBoyTest {
         PackingLot packingLot = mock(PackingLot.class);
         PackingTicket ticket_mock = mock(PackingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
 
         //when
@@ -34,7 +34,7 @@ class ParkingBoyTest {
         PackingTicket ticket_mock = mock(PackingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
         PackingTicket ticket = packingBoy.parking(car);
 
@@ -54,7 +54,7 @@ class ParkingBoyTest {
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         given(packingLot.getAvailableSize()).willReturn(10);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         PackingTicket ticket = packingBoy.parking(car);
 
         //when
@@ -69,7 +69,7 @@ class ParkingBoyTest {
     void should_return_true_when_add_packing_lot_given_packing_lot() {
         //given
         PackingLot packingLot = mock(PackingLot.class);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         PackingLot packingLot2 = mock(PackingLot.class);
 
         //when
@@ -82,7 +82,7 @@ class ParkingBoyTest {
     void should_return_ticket_when_packing_car_given_plot1_has_no_position_plot2_has_position() throws NoPositionException {
         //given
         PackingLot packingLot = mock(PackingLot.class);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         PackingLot packingLot2 = mock(PackingLot.class);
         packingBoy.addPackingLot(packingLot2);
         Car car = new Car();
@@ -100,7 +100,7 @@ class ParkingBoyTest {
     void should_return_cat_when_fetch_car_given_more_than_10_cars_to_packing() throws NoPositionException, UnrecognizedException, ProvideTicketException {
         //given
         PackingLot packingLot = mock(PackingLot.class);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         PackingLot packingLot2 = mock(PackingLot.class);
         packingBoy.addPackingLot(packingLot2);
         Car car = new Car();
@@ -118,7 +118,7 @@ class ParkingBoyTest {
     void should_throw_error_when_parking_car_given_more_than_10_cars() throws NoPositionException, UnrecognizedException, ProvideTicketException {
         //given
         PackingLot packingLot = mock(PackingLot.class);
-        PackingBoy packingBoy = new PackingBoy(packingLot);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(0);
         //when
         NoPositionException exception = assertThrows(NoPositionException.class, () -> {
