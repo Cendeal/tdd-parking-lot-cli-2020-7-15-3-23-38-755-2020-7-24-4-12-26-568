@@ -15,4 +15,8 @@ public class ParkingLotManager {
         parkerList.addAll(Arrays.asList(parker));
         return parkerList.size();
     }
+
+    public ParkingTicket specifyPackerParking(SmartParkingBoy smartParkingBoy, Car parkCar) {
+        return null;
+    }
 }
