@@ -15,7 +15,7 @@ public class ParkingLot {
         this.capacity = 10;
     }
 
-    public ParkingTicket park(Car car) throws NoPositionException {
+    public ParkingTicket parking(Car car) throws NoPositionException {
         if (this.ground.size() < this.capacity) {
             ParkingTicket ticket = new ParkingTicket();
             this.ground.put(ticket, car);
