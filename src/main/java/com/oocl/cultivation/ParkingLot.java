@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final Map<PackingTicket, Car> ground;
+    private final Map<ParkingTicket, Car> ground;
     private final int capacity;
 
     public ParkingLot() {
@@ -15,16 +15,16 @@ public class ParkingLot {
         this.capacity = 10;
     }
 
-    public PackingTicket packACar(Car car) throws NoPositionException {
+    public ParkingTicket packACar(Car car) throws NoPositionException {
         if (this.ground.size() < this.capacity) {
-            PackingTicket ticket = new PackingTicket();
+            ParkingTicket ticket = new ParkingTicket();
             this.ground.put(ticket, car);
             return ticket;
         }
         throw new NoPositionException();
     }
 
-    public Car getCar(PackingTicket ticket) throws UnrecognizedException {
+    public Car getCar(ParkingTicket ticket) throws UnrecognizedException {
         if(!this.ground.containsKey(ticket)){
             throw new UnrecognizedException();
         }

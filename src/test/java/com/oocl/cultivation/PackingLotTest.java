@@ -16,7 +16,7 @@ class PackingLotTest {
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
         //when
-        PackingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.packACar(car);
         //then
         assertNotNull(ticket);
     }
@@ -26,7 +26,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        PackingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.packACar(car);
 
         //when
         Car actual = packingLot.getCar(ticket);
@@ -41,8 +41,8 @@ class PackingLotTest {
         ParkingLot packingLot = new ParkingLot();
         Car car1 = new Car();
         Car car2 = new Car();
-        PackingTicket ticket1 = packingLot.packACar(car1);
-        PackingTicket ticket2 = packingLot.packACar(car2);
+        ParkingTicket ticket1 = packingLot.packACar(car1);
+        ParkingTicket ticket2 = packingLot.packACar(car2);
 
         //when
         Car fetchCar1 = packingLot.getCar(ticket1);
@@ -60,7 +60,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        PackingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.packACar(car);
 
         //when
         packingLot.getCar(ticket);
@@ -77,8 +77,8 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        PackingTicket ticket = packingLot.packACar(car);
-        PackingTicket ticket1 = mock(PackingTicket.class);
+        ParkingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket1 = mock(ParkingTicket.class);
 
         //when
         UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
@@ -93,7 +93,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        PackingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.packACar(car);
 
         //when
         UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
@@ -112,7 +112,7 @@ class PackingLotTest {
             packingLot.packACar(new Car());
         }
         NoPositionException noPositionException = assertThrows(NoPositionException.class, () -> {
-            PackingTicket ticket = packingLot.packACar(new Car());
+            ParkingTicket ticket = packingLot.packACar(new Car());
         });
         //then
         assertEquals("Not enough position.", noPositionException.getMessage());

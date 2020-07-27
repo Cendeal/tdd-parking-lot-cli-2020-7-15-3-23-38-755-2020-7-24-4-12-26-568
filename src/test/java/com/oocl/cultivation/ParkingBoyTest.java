@@ -15,13 +15,13 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        PackingTicket ticket_mock = mock(PackingTicket.class);
+        ParkingTicket ticket_mock = mock(ParkingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
 
         //when
-        PackingTicket ticket = packingBoy.parking(car);
+        ParkingTicket ticket = packingBoy.parking(car);
         //then
         assertNotNull(ticket);
     }
@@ -31,12 +31,12 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        PackingTicket ticket_mock = mock(PackingTicket.class);
+        ParkingTicket ticket_mock = mock(ParkingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
-        PackingTicket ticket = packingBoy.parking(car);
+        ParkingTicket ticket = packingBoy.parking(car);
 
         //when
         Car actual = packingBoy.fetch(ticket);
@@ -50,12 +50,12 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        PackingTicket ticket_mock = mock(PackingTicket.class);
+        ParkingTicket ticket_mock = mock(ParkingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         given(packingLot.getAvailableSize()).willReturn(10);
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
-        PackingTicket ticket = packingBoy.parking(car);
+        ParkingTicket ticket = packingBoy.parking(car);
 
         //when
         ProvideTicketException ticketException = assertThrows(ProvideTicketException.class, () -> {
@@ -87,11 +87,11 @@ class ParkingBoyTest {
         packingBoy.addPackingLot(packingLot2);
         Car car = new Car();
         given(packingLot.packACar(car)).willThrow(NoPositionException.class);
-        PackingTicket packingTicket = mock(PackingTicket.class);
+        ParkingTicket packingTicket = mock(ParkingTicket.class);
         given(packingLot2.getAvailableSize()).willReturn(10);
         given(packingLot2.packACar(car)).willReturn(packingTicket);
         //when
-        PackingTicket actual_ticket = packingBoy.parking(car);
+        ParkingTicket actual_ticket = packingBoy.parking(car);
         //then
         assertEquals(packingTicket, actual_ticket);
     }
@@ -105,7 +105,7 @@ class ParkingBoyTest {
         packingBoy.addPackingLot(packingLot2);
         Car car = new Car();
         given(packingLot.packACar(car)).willThrow(NoPositionException.class);
-        PackingTicket packingTicket = mock(PackingTicket.class);
+        ParkingTicket packingTicket = mock(ParkingTicket.class);
         given(packingLot2.packACar(car)).willReturn(packingTicket);
         given(packingLot2.getCar(packingTicket)).willReturn(car);
         //when

@@ -42,11 +42,11 @@ public class SuperSmartPackingBoyTest {
         given(packingLot2.getAvailablePositionRate()).willReturn(0.8);
 
         //when
-        PackingTicket plot1_ticket = mock(PackingTicket.class);
-        PackingTicket plot2_ticket = mock(PackingTicket.class);
+        ParkingTicket plot1_ticket = mock(ParkingTicket.class);
+        ParkingTicket plot2_ticket = mock(ParkingTicket.class);
         when(packingLot1.packACar(car)).thenReturn(plot1_ticket);
         when(packingLot2.packACar(car)).thenReturn(plot2_ticket);
-        PackingTicket actual_ticket = superSmartPackingBoy.parking(car);
+        ParkingTicket actual_ticket = superSmartPackingBoy.parking(car);
 
         //then
         assertEquals(plot2_ticket, actual_ticket);
@@ -57,12 +57,12 @@ public class SuperSmartPackingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        PackingTicket ticket_mock = mock(PackingTicket.class);
+        ParkingTicket ticket_mock = mock(ParkingTicket.class);
         given(packingLot.packACar(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
-        PackingTicket ticket = packingBoy.parking(car);
+        ParkingTicket ticket = packingBoy.parking(car);
 
         //when
         ProvideTicketException ticketException = assertThrows(ProvideTicketException.class, () -> {

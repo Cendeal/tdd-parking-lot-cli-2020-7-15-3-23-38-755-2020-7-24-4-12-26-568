@@ -8,7 +8,7 @@ public class SuperSmartPackingBoy extends ParkingBoy {
     }
 
     @Override
-    public PackingTicket parking(Car car) throws NoPositionException {
+    public ParkingTicket parking(Car car) throws NoPositionException {
         ParkingLot packingLot = getLagerLot();
         if (packingLot != null) {
             return packingLot.packACar(car);

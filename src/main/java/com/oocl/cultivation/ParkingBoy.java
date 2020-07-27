@@ -16,7 +16,7 @@ public class ParkingBoy {
         this.packingLots.add(packingLot);
     }
 
-    public PackingTicket parking(Car car) throws NoPositionException {
+    public ParkingTicket parking(Car car) throws NoPositionException {
         ParkingLot packingLot = this.packingLots.stream().filter(lot -> lot.getAvailableSize() > 0).findFirst().orElse(null);
         if (packingLot != null) {
             return packingLot.packACar(car);
@@ -24,7 +24,7 @@ public class ParkingBoy {
         throw new NoPositionException();
     }
 
-    public Car fetch(PackingTicket ticket) throws UnrecognizedException, ProvideTicketException {
+    public Car fetch(ParkingTicket ticket) throws UnrecognizedException, ProvideTicketException {
         if (ticket == null) {
             throw new ProvideTicketException();
         }
