@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.exception.NoPositionException;
+import com.oocl.cultivation.exception.ProvideTicketException;
 import com.oocl.cultivation.exception.UnrecognizedException;
 
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class ParkingLot {
         throw new NoPositionException();
     }
 
-    public Car getCar(ParkingTicket ticket) throws UnrecognizedException {
+    public Car fetch(ParkingTicket ticket) throws UnrecognizedException {
         if(!this.ground.containsKey(ticket)){
             throw new UnrecognizedException();
         }

@@ -16,7 +16,7 @@ class PackingLotTest {
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
         //when
-        ParkingTicket ticket = packingLot.park(car);
+        ParkingTicket ticket = packingLot.parking(car);
         //then
         assertNotNull(ticket);
     }
@@ -26,10 +26,10 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.park(car);
+        ParkingTicket ticket = packingLot.parking(car);
 
         //when
-        Car actual = packingLot.getCar(ticket);
+        Car actual = packingLot.fetch(ticket);
         //then
         assertNotNull(actual);
         assertEquals(car, actual);
@@ -41,12 +41,12 @@ class PackingLotTest {
         ParkingLot packingLot = new ParkingLot();
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingTicket ticket1 = packingLot.park(car1);
-        ParkingTicket ticket2 = packingLot.park(car2);
+        ParkingTicket ticket1 = packingLot.parking(car1);
+        ParkingTicket ticket2 = packingLot.parking(car2);
 
         //when
-        Car fetchCar1 = packingLot.getCar(ticket1);
-        Car fetchCar2 = packingLot.getCar(ticket2);
+        Car fetchCar1 = packingLot.fetch(ticket1);
+        Car fetchCar2 = packingLot.fetch(ticket2);
         //then
         assertNotNull(fetchCar1);
         assertNotNull(fetchCar2);
@@ -60,12 +60,12 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.park(car);
+        ParkingTicket ticket = packingLot.parking(car);
 
         //when
-        packingLot.getCar(ticket);
+        packingLot.fetch(ticket);
         UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
-            Car fetchedCar = packingLot.getCar(ticket);
+            Car fetchedCar = packingLot.fetch(ticket);
         });
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -77,12 +77,12 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.park(car);
+        ParkingTicket ticket = packingLot.parking(car);
         ParkingTicket ticket1 = mock(ParkingTicket.class);
 
         //when
         UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
-            Car fetchedCar = packingLot.getCar(ticket1);
+            Car fetchedCar = packingLot.fetch(ticket1);
         });
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -93,11 +93,11 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.park(car);
+        ParkingTicket ticket = packingLot.parking(car);
 
         //when
         UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
-            Car fetchedCar = packingLot.getCar(null);
+            Car fetchedCar = packingLot.fetch(null);
         });
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -109,10 +109,10 @@ class PackingLotTest {
         ParkingLot packingLot = new ParkingLot();
         //when
         for (int i = 0; i < 10; i++) {
-            packingLot.park(new Car());
+            packingLot.parking(new Car());
         }
         NoPositionException noPositionException = assertThrows(NoPositionException.class, () -> {
-            ParkingTicket ticket = packingLot.park(new Car());
+            ParkingTicket ticket = packingLot.parking(new Car());
         });
         //then
         assertEquals("Not enough position.", noPositionException.getMessage());
@@ -123,7 +123,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        packingLot.park(car);
+        packingLot.parking(car);
         //when
         int actual = packingLot.getAvailableSize();
         //then
@@ -145,7 +145,7 @@ class PackingLotTest {
         //given
         ParkingLot packingLot = new ParkingLot();
         for(int i=0;i<4;i++){
-            packingLot.park(new Car());
+            packingLot.parking(new Car());
         }
         //when
         double rate = packingLot.getAvailablePositionRate();

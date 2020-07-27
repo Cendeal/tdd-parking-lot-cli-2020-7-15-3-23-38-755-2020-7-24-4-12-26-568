@@ -19,7 +19,7 @@ public class ParkingBoy {
     public ParkingTicket parking(Car car) throws NoPositionException {
         ParkingLot packingLot = this.packingLots.stream().filter(lot -> lot.getAvailableSize() > 0).findFirst().orElse(null);
         if (packingLot != null) {
-            return packingLot.park(car);
+            return packingLot.parking(car);
         }
         throw new NoPositionException();
     }
@@ -30,7 +30,7 @@ public class ParkingBoy {
         }
         Car car = null;
         for (ParkingLot packingLot : this.getPackingLots()) {
-            car = packingLot.getCar(ticket);
+            car = packingLot.fetch(ticket);
             if (car != null) {
                 break;
             }

@@ -11,7 +11,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     public ParkingTicket parking(Car car) throws NoPositionException {
         ParkingLot packingLot = getLagerLot();
         if (packingLot != null) {
-            return packingLot.park(car);
+            return packingLot.parking(car);
         }
         throw new NoPositionException();
     }
