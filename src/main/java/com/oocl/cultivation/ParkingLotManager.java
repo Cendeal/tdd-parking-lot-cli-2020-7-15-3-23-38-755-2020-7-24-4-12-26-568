@@ -20,6 +20,9 @@ public class ParkingLotManager extends ParkingBoy {
     }
 
     public ParkingTicket specifyPackerParking(ParkAble parkAble, Car car) throws NoPositionException {
-        return parkAble.parking(car);
+        if(parkerList.contains(parkAble)){
+            return parkAble.parking(car);
+        }
+        return null;
     }
 }
