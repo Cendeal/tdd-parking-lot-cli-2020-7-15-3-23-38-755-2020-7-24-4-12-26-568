@@ -7,7 +7,7 @@ import com.oocl.cultivation.exception.UnrecognizedException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot implements ParkAble{
     private final Map<ParkingTicket, Car> ground;
     private final int capacity;
 

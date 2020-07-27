@@ -8,7 +8,7 @@ import com.oocl.cultivation.exception.UnrecognizedException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ParkingBoy {
+public class ParkingBoy implements ParkAble{
     private final List<ParkingLot> packingLots;
 
     public ParkingBoy(ParkingLot packingLot) {
