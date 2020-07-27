@@ -85,4 +85,21 @@ class ParkingLotManagerTest extends ParkingBoy{
         assertEquals("Not enough position.", exception.getMessage());
     }
 
+    @Test
+    public void should_return_car_when_fetch_car_given_ticket_when_has_many_parker() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        Car car = new Car();
+        ParkingLotManager parkingLotManager = new ParkingLotManager();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot());
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new ParkingLot());
+        parkingLotManager.addParker(parkingBoy,smartParkingBoy,superSmartParkingBoy);
+        ParkingTicket ticket = parkingLotManager.specifyPackerParking(parkingBoy,car);
+        //when
+        Car fetchCar = parkingLotManager.fetch(ticket);
+        //then
+        assertNotNull(fetchCar);
+        assertEquals(car,fetchCar);
+    }
+
 }
