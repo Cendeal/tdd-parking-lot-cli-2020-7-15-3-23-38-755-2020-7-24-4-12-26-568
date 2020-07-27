@@ -6,8 +6,6 @@ import com.oocl.cultivation.exception.UnrecognizedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 
 class ParkingLotManagerTest extends ParkingBoy{
     @Test
@@ -112,6 +110,21 @@ class ParkingLotManagerTest extends ParkingBoy{
         ParkingTicket ticket = parkingLotManager.specifyPackerParking(parkingBoy,car);
         //then
         assertNull(ticket);
+    }
+
+
+    @Test
+    public void should_throw_error_when_fetch_car_given_without_ticket() throws NoPositionException, UnrecognizedException, ProvideTicketException {
+        //given
+        Car car = new Car();
+        ParkingLotManager parkingLotManager = new ParkingLotManager();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        //when
+        ProvideTicketException exception = assertThrows(ProvideTicketException.class, () -> {
+            parkingLotManager.fetch(null);
+        });
+        //then
+        assertEquals("Please provide your parking ticket.", exception.getMessage());
     }
 
 }
