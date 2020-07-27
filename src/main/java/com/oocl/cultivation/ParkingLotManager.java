@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exception.NoPositionException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +18,7 @@ public class ParkingLotManager {
         return parkerList.size();
     }
 
-    public ParkingTicket specifyPackerParking(SmartParkingBoy smartParkingBoy, Car parkCar) {
-        return null;
+    public ParkingTicket specifyPackerParking(ParkAble parkAble, Car car) throws NoPositionException {
+        return parkAble.parking(car);
     }
 }

@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exception.NoPositionException;
 import com.oocl.cultivation.exception.ProvideTicketException;
 import com.oocl.cultivation.exception.UnrecognizedException;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class ParkingLotManagerTest {
     }
 
     @Test
-    public void should_return_right_car_when_specify_smart_parking_boy_packer_to_parking_given_super_smart_parking_boy() throws UnrecognizedException, ProvideTicketException {
+    public void should_return_right_car_when_specify_smart_parking_boy_packer_to_parking_given_super_smart_parking_boy() throws UnrecognizedException, ProvideTicketException, NoPositionException {
         //given
         ParkingLotManager parkingLotManager = new ParkingLotManager();
         ParkingLot parkingLot = new ParkingLot();
