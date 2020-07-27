@@ -23,10 +23,10 @@ public class SmartParkingBoyTest {
         given(plot2.getAvailableSize()).willReturn(4);
 
         //when
-        ParkingLot packingLot_target = smartParkingBoy.getMoreEmptyPlot();
+        ParkingLot packingLotTarget = smartParkingBoy.getMoreEmptyPlot();
 
         //then
-        assertEquals(plot2,packingLot_target);
+        assertEquals(plot2,packingLotTarget);
     }
 
     @Test
@@ -41,14 +41,14 @@ public class SmartParkingBoyTest {
         given(plot2.getAvailableSize()).willReturn(4);
 
         //when
-        ParkingTicket plot1_ticket= mock(ParkingTicket.class);
-        ParkingTicket plot2_ticket= mock(ParkingTicket.class);
-        when(plot1.parking(car)).thenReturn(plot1_ticket);
-        when(plot2.parking(car)).thenReturn(plot2_ticket);
-        ParkingTicket actual_ticket = smartParkingBoy.parking(car);
+        ParkingTicket plot1Ticket= mock(ParkingTicket.class);
+        ParkingTicket plot2Ticket= mock(ParkingTicket.class);
+        when(plot1.parking(car)).thenReturn(plot1Ticket);
+        when(plot2.parking(car)).thenReturn(plot2Ticket);
+        ParkingTicket actualTicket = smartParkingBoy.parking(car);
 
         //then
-        assertEquals(plot2_ticket,actual_ticket);
+        assertEquals(plot2Ticket,actualTicket);
     }
 
     @Test
@@ -56,9 +56,9 @@ public class SmartParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        ParkingTicket ticket_mock = mock(ParkingTicket.class);
-        given(packingLot.parking(car)).willReturn(ticket_mock);
-        given(packingLot.fetch(ticket_mock)).willReturn(car);
+        ParkingTicket ticketMock = mock(ParkingTicket.class);
+        given(packingLot.parking(car)).willReturn(ticketMock);
+        given(packingLot.fetch(ticketMock)).willReturn(car);
         SmartParkingBoy packingBoy = new SmartParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
 
