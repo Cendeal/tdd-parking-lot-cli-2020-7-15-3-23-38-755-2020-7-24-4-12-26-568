@@ -20,10 +20,8 @@ public class SuperSmartPackingBoyTest {
         PackingLot packingLot2 = mock(PackingLot.class);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
-        given(packingLot1.getAvailableSize()).willReturn(8);
-        given(packingLot1.getCapacity()).willReturn(10);
-        given(packingLot2.getAvailableSize()).willReturn(10);
-        given(packingLot2.getCapacity()).willReturn(10);
+        given(packingLot1.getAvailablePositionRate()).willReturn(0.6);
+        given(packingLot2.getAvailablePositionRate()).willReturn(0.8);
 
         //when
         PackingLot packingLotActual = superSmartPackingBoy.getLagerLot();
@@ -40,10 +38,8 @@ public class SuperSmartPackingBoyTest {
         SuperSmartPackingBoy superSmartPackingBoy = new SuperSmartPackingBoy(packingLot1);
         superSmartPackingBoy.addPackingLot(packingLot2);
 
-        given(packingLot1.getAvailableSize()).willReturn(8);
-        given(packingLot1.getCapacity()).willReturn(10);
-        given(packingLot2.getAvailableSize()).willReturn(10);
-        given(packingLot2.getCapacity()).willReturn(10);
+        given(packingLot1.getAvailablePositionRate()).willReturn(0.6);
+        given(packingLot2.getAvailablePositionRate()).willReturn(0.8);
 
         //when
         PackingTicket plot1_ticket = mock(PackingTicket.class);
@@ -81,7 +77,7 @@ public class SuperSmartPackingBoyTest {
         //given
         PackingLot packingLot = mock(PackingLot.class);
         SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
-        given(packingLot.getAvailableSize()).willReturn(0);
+        given(packingLot.getAvailablePositionRate()).willReturn(1.0);
         //when
         NoPositionException exception = assertThrows(NoPositionException.class, () -> {
             packingBoy.parking(new Car());

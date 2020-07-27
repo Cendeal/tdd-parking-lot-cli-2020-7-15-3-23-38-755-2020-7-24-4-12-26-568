@@ -35,6 +35,10 @@ public class PackingLot {
         return this.capacity - this.ground.size();
     }
 
+    public double getAvailablePositionRate(){
+        return (double) this.getAvailableSize() / this.getCapacity();
+    }
+
     public int getCapacity() {
         return this.capacity;
     }

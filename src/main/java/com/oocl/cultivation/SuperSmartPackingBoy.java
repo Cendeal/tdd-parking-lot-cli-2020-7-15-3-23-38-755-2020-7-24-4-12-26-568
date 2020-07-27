@@ -19,8 +19,8 @@ public class SuperSmartPackingBoy extends PackingBoy {
     public PackingLot getLagerLot() {
         PackingLot current = null;
         for (PackingLot packingLot : this.getPackingLots()) {
-            if (packingLot.getAvailableSize() > 0 &&
-                    (current == null || packingLot.getAvailableSize() / packingLot.getCapacity() > current.getAvailableSize() / current.getCapacity()))
+            if (packingLot.getAvailablePositionRate() < 1 &&
+                    (current == null || packingLot.getAvailablePositionRate() > current.getAvailablePositionRate()))
                 current = packingLot;
         }
         return current;
