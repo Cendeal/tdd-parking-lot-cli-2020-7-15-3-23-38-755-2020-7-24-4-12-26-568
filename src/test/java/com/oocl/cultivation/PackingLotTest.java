@@ -16,7 +16,7 @@ class PackingLotTest {
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
         //when
-        ParkingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.park(car);
         //then
         assertNotNull(ticket);
     }
@@ -26,7 +26,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.park(car);
 
         //when
         Car actual = packingLot.getCar(ticket);
@@ -41,8 +41,8 @@ class PackingLotTest {
         ParkingLot packingLot = new ParkingLot();
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingTicket ticket1 = packingLot.packACar(car1);
-        ParkingTicket ticket2 = packingLot.packACar(car2);
+        ParkingTicket ticket1 = packingLot.park(car1);
+        ParkingTicket ticket2 = packingLot.park(car2);
 
         //when
         Car fetchCar1 = packingLot.getCar(ticket1);
@@ -60,7 +60,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.park(car);
 
         //when
         packingLot.getCar(ticket);
@@ -77,7 +77,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.park(car);
         ParkingTicket ticket1 = mock(ParkingTicket.class);
 
         //when
@@ -93,7 +93,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        ParkingTicket ticket = packingLot.packACar(car);
+        ParkingTicket ticket = packingLot.park(car);
 
         //when
         UnrecognizedException exception = assertThrows(UnrecognizedException.class, () -> {
@@ -109,10 +109,10 @@ class PackingLotTest {
         ParkingLot packingLot = new ParkingLot();
         //when
         for (int i = 0; i < 10; i++) {
-            packingLot.packACar(new Car());
+            packingLot.park(new Car());
         }
         NoPositionException noPositionException = assertThrows(NoPositionException.class, () -> {
-            ParkingTicket ticket = packingLot.packACar(new Car());
+            ParkingTicket ticket = packingLot.park(new Car());
         });
         //then
         assertEquals("Not enough position.", noPositionException.getMessage());
@@ -123,7 +123,7 @@ class PackingLotTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = new ParkingLot();
-        packingLot.packACar(car);
+        packingLot.park(car);
         //when
         int actual = packingLot.getAvailableSize();
         //then
@@ -145,7 +145,7 @@ class PackingLotTest {
         //given
         ParkingLot packingLot = new ParkingLot();
         for(int i=0;i<4;i++){
-            packingLot.packACar(new Car());
+            packingLot.park(new Car());
         }
         //when
         double rate = packingLot.getAvailablePositionRate();

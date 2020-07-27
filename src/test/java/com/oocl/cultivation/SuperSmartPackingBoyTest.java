@@ -44,8 +44,8 @@ public class SuperSmartPackingBoyTest {
         //when
         ParkingTicket plot1_ticket = mock(ParkingTicket.class);
         ParkingTicket plot2_ticket = mock(ParkingTicket.class);
-        when(packingLot1.packACar(car)).thenReturn(plot1_ticket);
-        when(packingLot2.packACar(car)).thenReturn(plot2_ticket);
+        when(packingLot1.park(car)).thenReturn(plot1_ticket);
+        when(packingLot2.park(car)).thenReturn(plot2_ticket);
         ParkingTicket actual_ticket = superSmartPackingBoy.parking(car);
 
         //then
@@ -58,7 +58,7 @@ public class SuperSmartPackingBoyTest {
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
         ParkingTicket ticket_mock = mock(ParkingTicket.class);
-        given(packingLot.packACar(car)).willReturn(ticket_mock);
+        given(packingLot.park(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         SuperSmartPackingBoy packingBoy = new SuperSmartPackingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);

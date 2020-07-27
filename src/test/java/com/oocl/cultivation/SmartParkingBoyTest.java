@@ -43,8 +43,8 @@ public class SmartParkingBoyTest {
         //when
         ParkingTicket plot1_ticket= mock(ParkingTicket.class);
         ParkingTicket plot2_ticket= mock(ParkingTicket.class);
-        when(plot1.packACar(car)).thenReturn(plot1_ticket);
-        when(plot2.packACar(car)).thenReturn(plot2_ticket);
+        when(plot1.park(car)).thenReturn(plot1_ticket);
+        when(plot2.park(car)).thenReturn(plot2_ticket);
         ParkingTicket actual_ticket = smartParkingBoy.parking(car);
 
         //then
@@ -57,7 +57,7 @@ public class SmartParkingBoyTest {
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
         ParkingTicket ticket_mock = mock(ParkingTicket.class);
-        given(packingLot.packACar(car)).willReturn(ticket_mock);
+        given(packingLot.park(car)).willReturn(ticket_mock);
         given(packingLot.getCar(ticket_mock)).willReturn(car);
         SmartParkingBoy packingBoy = new SmartParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
