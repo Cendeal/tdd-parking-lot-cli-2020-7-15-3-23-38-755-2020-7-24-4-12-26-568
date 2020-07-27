@@ -139,4 +139,18 @@ class PackingLotTest {
         //then
         assertEquals(10,actual);
     }
+
+    @Test
+    public void should_return_zero_point_six_when_get_available_position_rate_given_packing_lot() throws NoPositionException {
+        //given
+        PackingLot packingLot = new PackingLot();
+        for(int i=0;i<4;i++){
+            packingLot.packACar(new Car());
+        }
+        //when
+        double rate = packingLot.getAvailablePositionRate();
+        //then
+        assertEquals(0.6,rate);
+
+    }
 }
