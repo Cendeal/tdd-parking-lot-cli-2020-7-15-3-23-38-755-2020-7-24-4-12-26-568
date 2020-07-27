@@ -15,8 +15,8 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        ParkingTicket ticket_mock = mock(ParkingTicket.class);
-        given(packingLot.parking(car)).willReturn(ticket_mock);
+        ParkingTicket ticketMock = mock(ParkingTicket.class);
+        given(packingLot.parking(car)).willReturn(ticketMock);
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
 
@@ -31,9 +31,9 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        ParkingTicket ticket_mock = mock(ParkingTicket.class);
-        given(packingLot.parking(car)).willReturn(ticket_mock);
-        given(packingLot.fetch(ticket_mock)).willReturn(car);
+        ParkingTicket ticketMock = mock(ParkingTicket.class);
+        given(packingLot.parking(car)).willReturn(ticketMock);
+        given(packingLot.fetch(ticketMock)).willReturn(car);
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
         given(packingLot.getAvailableSize()).willReturn(10);
         ParkingTicket ticket = packingBoy.parking(car);
@@ -50,9 +50,9 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot packingLot = mock(ParkingLot.class);
-        ParkingTicket ticket_mock = mock(ParkingTicket.class);
-        given(packingLot.parking(car)).willReturn(ticket_mock);
-        given(packingLot.fetch(ticket_mock)).willReturn(car);
+        ParkingTicket ticketMock = mock(ParkingTicket.class);
+        given(packingLot.parking(car)).willReturn(ticketMock);
+        given(packingLot.fetch(ticketMock)).willReturn(car);
         given(packingLot.getAvailableSize()).willReturn(10);
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
         ParkingTicket ticket = packingBoy.parking(car);
@@ -91,9 +91,9 @@ class ParkingBoyTest {
         given(packingLot2.getAvailableSize()).willReturn(10);
         given(packingLot2.parking(car)).willReturn(packingTicket);
         //when
-        ParkingTicket actual_ticket = packingBoy.parking(car);
+        ParkingTicket actualTicket = packingBoy.parking(car);
         //then
-        assertEquals(packingTicket, actual_ticket);
+        assertEquals(packingTicket, actualTicket);
     }
 
     @Test
@@ -109,9 +109,9 @@ class ParkingBoyTest {
         given(packingLot2.parking(car)).willReturn(packingTicket);
         given(packingLot2.fetch(packingTicket)).willReturn(car);
         //when
-        Car actual_car = packingBoy.fetch(packingTicket);
+        Car actualCar = packingBoy.fetch(packingTicket);
         //then
-        assertEquals(car, actual_car);
+        assertEquals(car, actualCar);
     }
 
     @Test
