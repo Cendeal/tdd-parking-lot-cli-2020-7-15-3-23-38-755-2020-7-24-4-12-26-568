@@ -61,7 +61,7 @@ public class SuperSmartPackingBoyTest {
         given(packingLot.parking(car)).willReturn(ticket_mock);
         given(packingLot.fetch(ticket_mock)).willReturn(car);
         SuperSmartParkingBoy packingBoy = new SuperSmartParkingBoy(packingLot);
-        given(packingLot.getAvailableSize()).willReturn(10);
+        given(packingLot.getAvailablePositionRate()).willReturn(1.0);
         ParkingTicket ticket = packingBoy.parking(car);
 
         //when
@@ -77,7 +77,7 @@ public class SuperSmartPackingBoyTest {
         //given
         ParkingLot packingLot = mock(ParkingLot.class);
         SuperSmartParkingBoy packingBoy = new SuperSmartParkingBoy(packingLot);
-        given(packingLot.getAvailablePositionRate()).willReturn(1.0);
+        given(packingLot.getAvailablePositionRate()).willReturn(0.0);
         //when
         NoPositionException exception = assertThrows(NoPositionException.class, () -> {
             packingBoy.parking(new Car());
